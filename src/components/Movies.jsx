@@ -11,12 +11,13 @@ function Movies() {
         getData();
     },[]);
     
-    const getData = async () => {
+    const getData = async () => {  /*first time function will fetch the data, other times it will take it from the
+                                    localStorage*/
 
         const fetched = localStorage.getItem('movies');
 
         if (fetched){
-            setMovies(JSON.parse(fetched));
+            setMovies(JSON.parse(fetched));  
         }
         else{
             const url = 'https://imdb-top-100-movies1.p.rapidapi.com/';
@@ -58,7 +59,7 @@ function Movies() {
 
 const Container = styled.div`
     display: grid;
-    max-width: 60vw;
+    width: 60%;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-auto-rows: 1fr;
     grid-gap: 10px;
@@ -68,6 +69,11 @@ const Container = styled.div`
     @media screen and (max-width: 1100px){
         grid-auto-rows: 0.5fr;
         font-size: 0.8rem;
+    }
+
+    @media screen and (max-width: 500px){
+        width: 100%;
+        grid-template-columns: 0.5fr 0.5fr 0.5fr 0.5fr;
     }
 `;
 
